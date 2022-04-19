@@ -1,6 +1,5 @@
 /.idea
-/fetchassignment
-/json.example
+/jsonexample
 /node_modules
 index.html
 index.js

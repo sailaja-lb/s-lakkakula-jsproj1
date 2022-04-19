@@ -215,10 +215,10 @@ async function test_getValidate_no_se() {
 test_getValidate_no_se()
 
 async function putValidate() {
-    const user = document.querySelector("#id");
-    const userdetails = await getValidate(id.value);
+    const user = document.querySelector("#idtext");
+    const userdetails = await getValidate(idtext.value);
 
-    const textvalue = document.querySelector("#validity");
+    const textvalue = document.getElementById("#validity");
     textvalue.innerHTML = JSON.stringify(userdetails);
 }
 
