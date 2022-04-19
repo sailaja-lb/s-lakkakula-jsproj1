@@ -218,7 +218,7 @@ async function putValidate() {
     const user = document.querySelector("#idtext");
     const userdetails = await getValidate(idtext.value);
 
-    const textvalue = document.getElementById("#validity");
+    const textvalue = document.querySelector("#validity");
     textvalue.innerHTML = JSON.stringify(userdetails);
 }
 
