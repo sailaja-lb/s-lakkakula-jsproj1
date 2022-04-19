@@ -1,0 +1,12 @@
+/.idea
+/fetchassignment
+/json.example
+/node_modules
+index.html
+index.js
+package-lock.json
+callback.js
+exercise.html
+exercise.js
+styles.css
+package.json

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width-device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Document</title>
+</head>
+<body>
+
+<header class="heading">
+    <h1 class="header">JSON Test</h1>
+    <p class="para">Simple testing for JSON-based applications</p>
+</header>
+
+
+<section class="section-class">
+
+    <h2>Services</h2>
+
+    <ol>
+        <li><a href="#ip">IP Address</a></li>
+        <li><a href="#headers">HTTP Headers</a></li>
+        <li><a href="#date">Date &amp; Time</a></li>
+        <li><a href="#validate">Validate</a></li>
+        <li><a href="#md5">MD5</a></li>
+    </ol>
+
+    <h3>IP Address</h3>
+    <p><strong>Endpoint:</strong> http://ip.jsontest.com/</p>
+    <div id="ipaddress"></div>
+
+
+    <h3>HTTP Headers</h3>
+    <p><strong>Endpoint:</strong> http://headers.jsontest.com/</p>
+    <div id="headers"></div>
+
+
+
+    <h3>Date and Time</h3>
+    <p><strong>Endpoint:</strong> http://date.jsontest.com (or http://time.jsontest.com )</p>
+    <div id="timedate"></div>
+
+
+    <h3>Validation</h3>
+    <p><strong>Endpoint:</strong> http://validate.jsontest.com/?json=[JSON-code-to-validate]</p
+    <div>
+        <textarea placeholder="Type something..." id="id" rows="5" cols="50"></textarea><br/>
+        <button type="button" onclick="putValidate()">submit</button>
+        <div id="validity"></div>
+    </div>
+
+
+    <h3>MD5</h3>
+    <p><strong>Endpoint:</strong> http://md5.jsontest.com/?text=[text to MD5]</p>
+    <div>
+        <input type="text" placeholder="Type something..." id="myInput">
+        <button type="button" onclick="putMd5value()">submit</button>
+        <div id="md5text"></div>
+    </div>
+
+</section>
+<script src="./exercise.js"></script>
+</body>
+</html>
+
