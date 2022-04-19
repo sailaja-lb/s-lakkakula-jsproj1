@@ -42,7 +42,7 @@ async function getHeaders() {
         return await response.json();
     } catch (error) {
         console.log(error.message);
-        return {"error" : error.message}
+        return {"error" : error.message};
     }
 }
 // NO_SE WITH TEST CASES FOR HEADERS
@@ -102,7 +102,7 @@ async function getDateTime() {
         return await response.json();
     } catch (error) {
         console.log(error);
-        return {"error" : error.message}
+        return {"error" : error.message};
     }
 }
 //NO_SE WITH TEST CASES FOR DATE AND TIME
@@ -180,7 +180,7 @@ async function getValidate(data) {
         return await response.json();
     } catch (error) {
         console.log(error.message);
-        return {"error" : error.message}
+        return {"error" : error.message};
     }
 }
 
@@ -209,10 +209,10 @@ async function test_getValidate_no_se() {
         console.log('validation is failed Test case: passed');
     }
     if ('error' in myValidate) {
-        console.log('error validation Test case: passed')
+        console.log('error validation Test case: passed');
     }
 }
-test_getValidate_no_se()
+test_getValidate_no_se();
 
 async function putValidate() {
     const user = document.querySelector("#idtext");
