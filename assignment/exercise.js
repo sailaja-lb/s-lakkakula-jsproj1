@@ -166,7 +166,7 @@ async function test_getMd5value_no_se() {
 test_getMd5value_no_se()
 
 async function putMd5value() {
-    //const myName = document.querySelector("#myInput");
+    const myName = document.querySelector("#myInput");
     const displaymd5 = await getMd5value(myName.value);
 
     const md5 = document.querySelector("#md5text");
