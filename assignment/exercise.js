@@ -1,13 +1,329 @@
 //IP ADDRESS
-async function getIp() {
+async function getIp(_fet = fetch) {
     try {
-        const response = await fetch('http://ip.jsontest.com/');
+        const response = await _fet('http://ip.jsontest.com/');
+        if (response.ok === false)
+            return false
         return await response.json();
     } catch (error) {
         console.log(error);
         return { "error": error.message };
     }
 }
+async function putIp() {
+
+    const dispalyip = await getIp();
+    const ip = document.querySelector("#ipaddress");
+    ip.innerHTML = JSON.stringify(dispalyip);
+}
+putIp();
+
+async function test_ip_fetch() {
+    const _fetch_not_ok = (url) => {
+        return new Promise(((resolve, reject) => {
+            resolve({
+                ok: false
+            })
+        }))
+    }
+    let result = await getIp(_fetch_not_ok)
+
+    if (result === false)
+        console.log("IP test Passed")
+    else
+        console.log("IP test Failed", result)
+
+    const _fetch_ok = (url) => {
+        return new Promise((resolve) => {
+            return resolve({
+                ok: true,
+                json: () => {
+                    return new Promise((resolve) => {
+                        resolve({ip: "127.0.0.1"})
+                    })
+                }
+            })
+        })
+    }
+    result = await getIp(_fetch_ok)
+    if(result?.ip === '127.0.0.1')
+        console.log("Ip Test Passed");
+    else
+        console.log("Ip Test Failed", result);
+}
+test_ip_fetch();
+
+//HTTP Headers
+async function getHeaders(_fet = fetch) {
+    try {
+        const response = await _fet('http://headers.jsontest.com/');
+        if (response.ok === false)
+            return false
+        return await response.json();
+    } catch (error) {
+        console.log(error);
+        return { "error": error.message };
+    }
+}
+async function putHeaders() {
+
+    const dispalyheaders = await getHeaders();
+    const headers = document.querySelector("#headers");
+    headers.innerHTML = JSON.stringify(dispalyheaders);
+}
+putHeaders();
+
+//HTTP Headers Unit Testing
+async function test_Headers_fetch() {
+    const _fetch_not_ok = (url) => {
+        return new Promise(((resolve, reject) => {
+            resolve({
+                ok: false
+            })
+        }))
+    }
+    let result = await getHeaders(_fetch_not_ok)
+
+    if (result === false)
+        console.log("Headers test Passed")
+    else
+        console.log("Headers test Failed", result)
+
+    const _fetch_ok = (url) => {
+        return new Promise((resolve) => {
+            return resolve({
+                ok: true,
+                json: () => {
+                    return new Promise((resolve) => {
+                        resolve({
+                                Accept_Language: "en-US,en;q=0.8",
+                                Host: "headers.jsontest.com",
+                                Accept_Charset: "ISO-8859-1,utf-8;q=0.7,*;q=0.3",
+                                Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+                            }
+                        )
+                    })
+                }
+            })
+        })
+    }
+    result = await getHeaders(_fetch_ok)
+    if(result["Accept_Language"] === "en-US,en;q=0.8" &&
+        result["Host"] === "headers.jsontest.com" &&
+        result["Accept_Charset"] === "ISO-8859-1,utf-8;q=0.7,*;q=0.3" &&
+        result["Accept"] === "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
+
+        console.log("Headers Test Passed");
+    else
+        console.log("Headers Test Failed", result);
+}
+test_Headers_fetch();
+
+// //DISPLAY DATE AND TIME
+async function getDateTime(_fet = fetch) {
+    try {
+        const response = await _fet('http://date.jsontest.com');
+        if (response.ok === false)
+            return false
+        return await response.json();
+    } catch (error) {
+        console.log(error);
+        return { "error": error.message };
+    }
+}
+async function putDateTime() {
+
+    const dispalydatetime = await getDateTime();
+    const datetime = document.querySelector("#timedate");
+    datetime.innerHTML = JSON.stringify(dispalydatetime);
+
+}
+putDateTime();
+setInterval(putDateTime,1000);
+
+
+//DATE and TIME
+async function test_Datetime_fetch() {
+    const _fetch_not_ok = (url) => {
+        return new Promise(((resolve, reject) => {
+            resolve({
+                ok: false
+            })
+        }))
+    }
+    let result = await getDateTime(_fetch_not_ok)
+
+    if (result === false)
+        console.log("DateTime test Passed")
+    else
+        console.log("DateTime test Failed", result)
+
+    const _fetch_ok = (url) => {
+        return new Promise((resolve) => {
+            return resolve({
+                ok: true,
+                json: () => {
+                    return new Promise((resolve) => {
+                        resolve({
+                                time: "03:53:25 AM",
+                                milliseconds_since_epoch: 1362196405309,
+                                date: "03-02-2013"
+                            }
+                        )
+                    })
+                }
+            })
+        })
+    }
+    result = await getDateTime(_fetch_ok)
+    if(result["time"] === "03:53:25 AM" &&
+        result["milliseconds_since_epoch"] === 1362196405309 &&
+        result["date"] === "03-02-2013")
+
+        console.log("DateTime Test Passed");
+    else
+        console.log("DateTime Test Failed", result);
+}
+test_Datetime_fetch();
+
+//MD5
+async function getInputMd5() {
+    return document.querySelector("#myInput").value;
+}
+async function getMd5value(_fet = fetch) {
+    const text = await getInputMd5();
+    try {
+        const response = await _fet(`http://md5.jsontest.com/?text=${text}`);
+        if (response.ok === false)
+            return false
+        return await response.json();
+    } catch (error) {
+        console.log(error);
+        return { "error": error.message };
+    }
+}
+async function putMd5value() {
+    // const myName = document.querySelector("#myInput");
+    // const displaymd5 = await getMd5value(myName.value);
+    let input = await getMd5value();
+    const md5 = document.querySelector("#md5text");
+    md5.innerHTML = JSON.stringify(input);
+}
+
+//MD5 UNIT TESTING
+async function test_Md5_fetch() {
+    const _fetch_not_ok = (url) => {
+        return new Promise(((resolve, reject) => {
+            resolve({
+                ok: false
+            })
+        }))
+    }
+    let result = await getMd5value(_fetch_not_ok)
+
+    if (result === false)
+        console.log("Md5 test Passed")
+    else
+        console.log("Md5 test Failed", result)
+
+    const _fetch_ok = (url) => {
+        return new Promise((resolve) => {
+            return resolve({
+                ok: true,
+                json: () => {
+                    return new Promise((resolve) => {
+                        resolve({
+                                md5: "fa4c6baa0812e5b5c80ed8885e55a8a6",
+                                original: "example_text"
+                            }
+                        )
+                    })
+                }
+            })
+        })
+    }
+    result = await getMd5value(_fetch_ok)
+    if(result["md5"] === "fa4c6baa0812e5b5c80ed8885e55a8a6" &&
+        result["original"] === "example_text")
+
+        console.log("Md5 Test Passed");
+    else
+        console.log("Md5 Test Failed", result);
+}
+test_Md5_fetch();
+
+//validation
+async function getInputValidate() {
+    return document.querySelector("#idtext").value;
+}
+async function getValidate(_fet = fetch) {
+    const txt = await getInputValidate();
+    try {
+        const response = await _fet(`http://validate.jsontest.com/?json=${txt}`);
+        if (response.ok === false)
+            return false
+        return await response.json();
+    } catch (error) {
+        console.log(error);
+        return { "error": error.message };
+    }
+}
+async function putValidate() {
+    // const user = document.querySelector("#idtext");
+    // const userdetails = await getValidate(user.value);
+    let userdetails = await getValidate();
+    const textvalue = document.querySelector("#validity");
+    textvalue.innerHTML = JSON.stringify(userdetails);
+}
+
+async function test_valid_fetch() {
+    const _fetch_not_ok = (url) => {
+        return new Promise(((resolve, reject) => {
+            resolve({
+                ok: false
+            })
+        }))
+    }
+    let result = await getValidate(_fetch_not_ok)
+
+    if (result === false)
+        console.log("Validation test Passed")
+    else
+        console.log("Validation test Failed", result)
+
+    const _fetch_ok = (url) => {
+        return new Promise((resolve) => {
+            return resolve({
+                ok: true,
+                json: () => {
+                    return new Promise((resolve) => {
+                        resolve({
+                                object_or_array: "object",
+                                empty: "false",
+                                parse_time_nanoseconds: 19608,
+                                validate: "true",
+                                size: 1
+                            }
+                        )
+                    })
+                }
+            })
+        })
+    }
+    result = await getValidate(_fetch_ok)
+    if(result["object_or_array"] === "object" &&
+        result["empty"] === "false" &&
+        result["parse_time_nanoseconds"] === 19608 &&
+        result["validate"] === "true" &&
+        result["size"] === 1)
+
+        console.log("Validation Test Passed");
+    else
+        console.log("Validation Test Failed", result);
+}
+test_valid_fetch();
+
+
 // NO_SE WITH TEST CASES FOR IP
 async function test_getIp_no_se() {
     const myIp = await getIp();
@@ -25,26 +341,6 @@ async function test_getIp_no_se() {
 }
 
 test_getIp_no_se();
-
-async function putIp() {
-
-    const dispalyip = await getIp();
-    const ip = document.querySelector("#ipaddress");
-    ip.innerHTML = JSON.stringify(dispalyip);
-}
-putIp();
-
-
-//HEADERS
-async function getHeaders() {
-    try {
-        const response = await fetch('http://headers.jsontest.com/');
-        return await response.json();
-    } catch (error) {
-        console.log(error);
-        return {"error" : error.message};
-    }
-}
 // NO_SE WITH TEST CASES FOR HEADERS
 async function test_getHeaders_no_se() {
     const myHeader = await getHeaders();
@@ -84,27 +380,6 @@ async function test_getHeaders_no_se() {
 
 test_getHeaders_no_se();
 
-
-async function putHeaders() {
-
-    const dispalyheaders = await getHeaders();
-    const headers = document.querySelector("#headers");
-    headers.innerHTML = JSON.stringify(dispalyheaders);
-}
-putHeaders();
-
-
-
-//DISPLAY DATE AND TIME
-async function getDateTime() {
-    try {
-        const response = await fetch('http://date.jsontest.com');
-        return await response.json();
-    } catch (error) {
-        console.log(error);
-        return {"error" : error.message};
-    }
-}
 //NO_SE WITH TEST CASES FOR DATE AND TIME
 async function test_getDateTime_no_se() {
     const myDateTime = await getDateTime();
@@ -125,28 +400,6 @@ async function test_getDateTime_no_se() {
 }
 test_getDateTime_no_se();
 
-async function putDateTime() {
-
-    const dispalydatetime = await getDateTime();
-    const datetime = document.querySelector("#timedate");
-    datetime.innerHTML = JSON.stringify(dispalydatetime);
-
-}
-putDateTime();
-setInterval(putDateTime,1000);
-
-
-//MD5
-async function getMd5value(txt) {
-    try {
-        const response = await fetch(`http://md5.jsontest.com/?text=${txt}`);
-        return await response.json();
-    } catch (error) {
-        console.log(error);
-        return { "error": error.message };
-    }
-}
-
 //NO_SE WITH TEST CASES FOR MD5
 async function test_getMd5value_no_se() {
     const text2MD5 = await getMd5value('sailaja');
@@ -164,25 +417,6 @@ async function test_getMd5value_no_se() {
     }
 }
 test_getMd5value_no_se()
-
-async function putMd5value() {
-    const myName = document.querySelector("#myInput");
-    const displaymd5 = await getMd5value(myName.value);
-
-    const md5 = document.querySelector("#md5text");
-    md5.innerHTML = JSON.stringify(displaymd5);
-}
-
-//validation
-async function getValidate(data) {
-    try {
-        const response = await fetch(`http://validate.jsontest.com/?json=${data}`);
-        return await response.json();
-    } catch (error) {
-        console.log(error);
-        return {"error" : error.message};
-    }
-}
 
 //NO_SE WITH TEST CASES FOR Validation
 async function test_getValidate_no_se() {
@@ -213,18 +447,6 @@ async function test_getValidate_no_se() {
     }
 }
 test_getValidate_no_se();
-
-async function putValidate() {
-    const user = document.querySelector("#idtext");
-    const userdetails = await getValidate(user.value);
-
-    const textvalue = document.querySelector("#validity");
-    textvalue.innerHTML = JSON.stringify(userdetails);
-}
-
-
-
-
 
 
 
