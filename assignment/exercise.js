@@ -166,8 +166,8 @@ async function test_getMd5value_no_se() {
 test_getMd5value_no_se()
 
 async function putMd5value() {
-    const myName = document.querySelector("#myInput");
-    const displaymd5 = await getMd5value(myInput.value);
+    //const myName = document.querySelector("#myInput");
+    const displaymd5 = await getMd5value(myName.value);
 
     const md5 = document.querySelector("#md5text");
     md5.innerHTML = JSON.stringify(displaymd5);
@@ -216,7 +216,7 @@ test_getValidate_no_se();
 
 async function putValidate() {
     const user = document.querySelector("#idtext");
-    const userdetails = await getValidate(idtext.value);
+    const userdetails = await getValidate(user.value);
 
     const textvalue = document.querySelector("#validity");
     textvalue.innerHTML = JSON.stringify(userdetails);
