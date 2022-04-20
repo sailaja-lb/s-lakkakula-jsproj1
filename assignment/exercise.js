@@ -1,7 +1,7 @@
 //IP ADDRESS
 async function getIp() {
     try {
-        const response = await fetch('http://ip.jsontest.c/');
+        const response = await fetch('http://ip.jsontest.com/');
         return await response.json();
     } catch (error) {
         console.log(error);
