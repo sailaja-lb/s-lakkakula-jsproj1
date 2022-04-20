@@ -1,10 +1,10 @@
 //IP ADDRESS
 async function getIp() {
     try {
-        const response = await fetch('http://ip.jsontest.com/');
+        const response = await fetch('http://ip.jsontest.c/');
         return await response.json();
     } catch (error) {
-        console.log(error.message);
+        console.log(error);
         return { "error": error.message };
     }
 }
@@ -41,7 +41,7 @@ async function getHeaders() {
         const response = await fetch('http://headers.jsontest.com/');
         return await response.json();
     } catch (error) {
-        console.log(error.message);
+        console.log(error);
         return {"error" : error.message};
     }
 }
@@ -142,7 +142,7 @@ async function getMd5value(txt) {
         const response = await fetch(`http://md5.jsontest.com/?text=${txt}`);
         return await response.json();
     } catch (error) {
-        console.log(error.message);
+        console.log(error);
         return { "error": error.message };
     }
 }
@@ -179,7 +179,7 @@ async function getValidate(data) {
         const response = await fetch(`http://validate.jsontest.com/?json=${data}`);
         return await response.json();
     } catch (error) {
-        console.log(error.message);
+        console.log(error);
         return {"error" : error.message};
     }
 }
