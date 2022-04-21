@@ -20,11 +20,11 @@
     <h2>Services</h2>
 
     <ol>
-        <li><a href="#ip">IP Address</a></li>
+        <li><a href="#ipaddress">IP Address</a></li>
         <li><a href="#headers">HTTP Headers</a></li>
-        <li><a href="#date">Date &amp; Time</a></li>
-        <li><a href="#validate">Validate</a></li>
-        <li><a href="#md5">MD5</a></li>
+        <li><a href="#timedate">Date &amp; Time</a></li>
+        <li><a href="#validity">Validate</a></li>
+        <li><a href="#md5text">MD5</a></li>
     </ol>
 
     <h3>IP Address</h3>
@@ -39,14 +39,14 @@
 
 
     <h3>Date and Time</h3>
-    <p><strong>Endpoint:</strong> http://date.jsontest.com (or http://time.jsontest.com )</p>
+    <p><strong>Endpoint:</strong> http://date.jsontest.com (or http://time.jsontest.com)</p>
     <div id="timedate"></div>
 
 
     <h3>Validation</h3>
-    <p><strong>Endpoint:</strong> http://validate.jsontest.com/?json=[JSON-code-to-validate]</p
+    <p><strong>Endpoint:</strong> http://validate.jsontest.com/?json=[JSON-code-to-validate]</p>
     <div>
-        <textarea placeholder="Type something..." id="idtext" rows="5" cols="50"></textarea><br/>
+        <input placeholder="Type something..." id="idtext" /><br/><br/>
         <button type="button" onclick="putValidate()">submit</button>
         <div id="validity"></div>
     </div>
@@ -55,7 +55,7 @@
     <h3>MD5</h3>
     <p><strong>Endpoint:</strong> http://md5.jsontest.com/?text=[text to MD5]</p>
     <div>
-        <input type="text" placeholder="Type something..." id="myInput">
+        <input type="text" placeholder="Type something..." id="myInput" /><br/><br/>
         <button type="button" onclick="putMd5value()">submit</button>
         <div id="md5text"></div>
     </div>

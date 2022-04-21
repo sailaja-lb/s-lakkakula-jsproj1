@@ -29,9 +29,9 @@ async function test_ip_fetch() {
     let result = await getIp(_fetch_not_ok)
 
     if (result === false)
-        console.log("IP test Passed")
+        console.log("IP _fetch_not_ok test Passed")
     else
-        console.log("IP test Failed", result)
+        console.log("IP _fetch_not_ok test Failed", result)
 
     const _fetch_ok = (url) => {
         return new Promise((resolve) => {
@@ -47,9 +47,9 @@ async function test_ip_fetch() {
     }
     result = await getIp(_fetch_ok)
     if(result?.ip === '127.0.0.1')
-        console.log("Ip Test Passed");
+        console.log("Ip _fetch_ok Test Passed");
     else
-        console.log("Ip Test Failed", result);
+        console.log("Ip _fetch_ok Test Failed", result);
 }
 test_ip_fetch();
 
@@ -85,9 +85,9 @@ async function test_Headers_fetch() {
     let result = await getHeaders(_fetch_not_ok)
 
     if (result === false)
-        console.log("Headers test Passed")
+        console.log("Headers _fetch_not_ok test Passed")
     else
-        console.log("Headers test Failed", result)
+        console.log("Headers _fetch_not_ok test Failed", result)
 
     const _fetch_ok = (url) => {
         return new Promise((resolve) => {
@@ -113,9 +113,9 @@ async function test_Headers_fetch() {
         result["Accept_Charset"] === "ISO-8859-1,utf-8;q=0.7,*;q=0.3" &&
         result["Accept"] === "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
 
-        console.log("Headers Test Passed");
+        console.log("Headers _fetch_ok Test Passed");
     else
-        console.log("Headers Test Failed", result);
+        console.log("Headers _fetch_ok Test Failed", result);
 }
 test_Headers_fetch();
 
@@ -154,9 +154,9 @@ async function test_Datetime_fetch() {
     let result = await getDateTime(_fetch_not_ok)
 
     if (result === false)
-        console.log("DateTime test Passed")
+        console.log("DateTime _fetch_not_ok test Passed")
     else
-        console.log("DateTime test Failed", result)
+        console.log("DateTime _fetch_not_ok test Failed", result)
 
     const _fetch_ok = (url) => {
         return new Promise((resolve) => {
@@ -180,9 +180,9 @@ async function test_Datetime_fetch() {
         result["milliseconds_since_epoch"] === 1362196405309 &&
         result["date"] === "03-02-2013")
 
-        console.log("DateTime Test Passed");
+        console.log("DateTime _fetch_ok Test Passed");
     else
-        console.log("DateTime Test Failed", result);
+        console.log("DateTime _fetch_ok Test Failed", result);
 }
 test_Datetime_fetch();
 
@@ -222,9 +222,9 @@ async function test_Md5_fetch() {
     let result = await getMd5value(_fetch_not_ok)
 
     if (result === false)
-        console.log("Md5 test Passed")
+        console.log("Md5 _fetch_not_ok test Passed")
     else
-        console.log("Md5 test Failed", result)
+        console.log("Md5 _fetch_not_ok test Failed", result)
 
     const _fetch_ok = (url) => {
         return new Promise((resolve) => {
@@ -246,9 +246,9 @@ async function test_Md5_fetch() {
     if(result["md5"] === "fa4c6baa0812e5b5c80ed8885e55a8a6" &&
         result["original"] === "example_text")
 
-        console.log("Md5 Test Passed");
+        console.log("Md5 _fetch_ok Test Passed");
     else
-        console.log("Md5 Test Failed", result);
+        console.log("Md5 _fetch_ok Test Failed", result);
 }
 test_Md5_fetch();
 
@@ -287,9 +287,9 @@ async function test_valid_fetch() {
     let result = await getValidate(_fetch_not_ok)
 
     if (result === false)
-        console.log("Validation test Passed")
+        console.log("Validation _fetch_not_ok test Passed")
     else
-        console.log("Validation test Failed", result)
+        console.log("Validation _fetch_not_ok test Failed", result)
 
     const _fetch_ok = (url) => {
         return new Promise((resolve) => {
@@ -317,9 +317,9 @@ async function test_valid_fetch() {
         result["validate"] === "true" &&
         result["size"] === 1)
 
-        console.log("Validation Test Passed");
+        console.log("Validation _fetch_ok Test Passed");
     else
-        console.log("Validation Test Failed", result);
+        console.log("Validation _fetch_ok Test Failed", result);
 }
 test_valid_fetch();
 
@@ -328,128 +328,128 @@ test_valid_fetch();
 ////////////////////                  INTEGRATION TESTING               //////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 // NO_SE WITH TEST CASES FOR IP
-async function test_getIp_no_se() {
-    const myIp = await getIp();
-    // If response is successful
-    if ('ip' in myIp) {
-        console.log('IP is available Test case: passed');
-    }
-    if (myIp['ip'] !== '') {
-        console.log('IP is available Test case: passed');
-    }
-    // If response is failed
-    if ('error' in myIp) {
-        console.log('IP is not available Test case: passed');
-    }
-}
-
-test_getIp_no_se();
-// NO_SE WITH TEST CASES FOR HEADERS
-async function test_getHeaders_no_se() {
-    const myHeader = await getHeaders();
-    // If response is successful
-    if ('Origin' in myHeader) {
-        console.log('Header is available Test case: passed');
-    }
-    if ('X-Cloud-Trace-Context' in myHeader) {
-        console.log('Header is available Test case: passed');
-    }
-    if ('Accept' in myHeader) {
-        console.log('Header is available Test case: passed');
-    }
-    if ('Cache-Control' in myHeader) {
-        console.log('Header is available Test case: passed');
-    }
-    if ('traceparent' in myHeader) {
-        console.log('Header is available Test case: passed');
-    }
-    if ('User-Agent' in myHeader) {
-        console.log('Header is available Test case: passed');
-    }
-    if ('Host' in myHeader) {
-        console.log('Header is available Test case: passed');
-    }
-    if ('Pragma' in myHeader) {
-        console.log('Header is available Test case: passed');
-    }
-    if ('Accept-Language' in myHeader) {
-        console.log('Header is available Test case: passed');
-    }
-    // If response is failed
-    if ('error' in myHeader) {
-        console.log('Header is not available Test case: passed');
-    }
-}
-
-test_getHeaders_no_se();
-
-//NO_SE WITH TEST CASES FOR DATE AND TIME
-async function test_getDateTime_no_se() {
-    const myDateTime = await getDateTime();
-    // If response is successful
-    if ('date' in myDateTime) {
-        console.log('Date is available Test case: passed');
-    }
-    if ('milliseconds_since_epoch' in myDateTime) {
-        console.log('milliseconds is available Test case: passed');
-    }
-    if ('time' in myDateTime) {
-        console.log('time is available Test case: passed');
-    }
-    // If response is failed
-    if ('error' in myDateTime) {
-        console.log('Date Time is not available Test case: passed');
-    }
-}
-test_getDateTime_no_se();
-
-//NO_SE WITH TEST CASES FOR MD5
-async function test_getMd5value_no_se() {
-    const text2MD5 = await getMd5value('sailaja');
-    // If response is successful and check response have md5
-    if ('md5' in text2MD5) {
-        console.log('MD5 is available Test case: passed');
-    }
-    // If response is successful and check original is sailaja(input given)
-    if (text2MD5['original'] === 'sailaja') {
-        console.log('MD5 original value is same as input Test case: passed');
-    }
-    // If response is failed
-    if ('error' in text2MD5) {
-        console.log('MD5 error Test case: passed');
-    }
-}
-test_getMd5value_no_se()
-
-//NO_SE WITH TEST CASES FOR Validation
-async function test_getValidate_no_se() {
-    const myValidate = await getValidate("{name:3}");
-    // If response is successful and check response
-    console.log(myValidate);
-    if ('size' in myValidate) {
-        console.log('size is available Test case: passed');
-    }
-    if ('parse_time_nanoseconds' in myValidate) {
-        console.log('parse is available Test case: passed');
-    }
-    if ('object_or_array' in myValidate) {
-        console.log('obj or array is available Test case: passed');
-    }
-    if ('validate' in myValidate) {
-        console.log('validate is available Test case: passed');
-    }
-    if ('empty' in myValidate) {
-        console.log('empty is available Test case: passed');
-    }
-    // If response is failed
-    if ('error_info' in myValidate) {
-        console.log('validation is failed Test case: passed');
-    }
-    if ('error' in myValidate) {
-        console.log('error validation Test case: passed');
-    }
-}
-test_getValidate_no_se();
-
+// async function test_getIp_no_se() {
+//     const myIp = await getIp();
+//     // If response is successful
+//     if ('ip' in myIp) {
+//         console.log('IP is available Test case: passed');
+//     }
+//     if (myIp['ip'] !== '') {
+//         console.log('IP is available Test case: passed');
+//     }
+//     // If response is failed
+//     if ('error' in myIp) {
+//         console.log('IP is not available Test case: passed');
+//     }
+// }
+//
+// test_getIp_no_se();
+// // NO_SE WITH TEST CASES FOR HEADERS
+// async function test_getHeaders_no_se() {
+//     const myHeader = await getHeaders();
+//     // If response is successful
+//     if ('Origin' in myHeader) {
+//         console.log('Header is available Test case: passed');
+//     }
+//     if ('X-Cloud-Trace-Context' in myHeader) {
+//         console.log('Header is available Test case: passed');
+//     }
+//     if ('Accept' in myHeader) {
+//         console.log('Header is available Test case: passed');
+//     }
+//     if ('Cache-Control' in myHeader) {
+//         console.log('Header is available Test case: passed');
+//     }
+//     if ('traceparent' in myHeader) {
+//         console.log('Header is available Test case: passed');
+//     }
+//     if ('User-Agent' in myHeader) {
+//         console.log('Header is available Test case: passed');
+//     }
+//     if ('Host' in myHeader) {
+//         console.log('Header is available Test case: passed');
+//     }
+//     if ('Pragma' in myHeader) {
+//         console.log('Header is available Test case: passed');
+//     }
+//     if ('Accept-Language' in myHeader) {
+//         console.log('Header is available Test case: passed');
+//     }
+//     // If response is failed
+//     if ('error' in myHeader) {
+//         console.log('Header is not available Test case: passed');
+//     }
+// }
+//
+// test_getHeaders_no_se();
+//
+// //NO_SE WITH TEST CASES FOR DATE AND TIME
+// async function test_getDateTime_no_se() {
+//     const myDateTime = await getDateTime();
+//     // If response is successful
+//     if ('date' in myDateTime) {
+//         console.log('Date is available Test case: passed');
+//     }
+//     if ('milliseconds_since_epoch' in myDateTime) {
+//         console.log('milliseconds is available Test case: passed');
+//     }
+//     if ('time' in myDateTime) {
+//         console.log('time is available Test case: passed');
+//     }
+//     // If response is failed
+//     if ('error' in myDateTime) {
+//         console.log('Date Time is not available Test case: passed');
+//     }
+// }
+// test_getDateTime_no_se();
+//
+// //NO_SE WITH TEST CASES FOR MD5
+// async function test_getMd5value_no_se() {
+//     const text2MD5 = await getMd5value('sailaja');
+//     // If response is successful and check response have md5
+//     if ('md5' in text2MD5) {
+//         console.log('MD5 is available Test case: passed');
+//     }
+//     // If response is successful and check original is sailaja(input given)
+//     if (text2MD5['original'] === 'sailaja') {
+//         console.log('MD5 original value is same as input Test case: passed');
+//     }
+//     // If response is failed
+//     if ('error' in text2MD5) {
+//         console.log('MD5 error Test case: passed');
+//     }
+// }
+// test_getMd5value_no_se()
+//
+// //NO_SE WITH TEST CASES FOR Validation
+// async function test_getValidate_no_se() {
+//     const myValidate = await getValidate("{name:3}");
+//     // If response is successful and check response
+//     console.log(myValidate);
+//     if ('size' in myValidate) {
+//         console.log('size is available Test case: passed');
+//     }
+//     if ('parse_time_nanoseconds' in myValidate) {
+//         console.log('parse is available Test case: passed');
+//     }
+//     if ('object_or_array' in myValidate) {
+//         console.log('obj or array is available Test case: passed');
+//     }
+//     if ('validate' in myValidate) {
+//         console.log('validate is available Test case: passed');
+//     }
+//     if ('empty' in myValidate) {
+//         console.log('empty is available Test case: passed');
+//     }
+//     // If response is failed
+//     if ('error_info' in myValidate) {
+//         console.log('validation is failed Test case: passed');
+//     }
+//     if ('error' in myValidate) {
+//         console.log('error validation Test case: passed');
+//     }
+// }
+// test_getValidate_no_se();
+//
 
 
