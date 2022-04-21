@@ -46,7 +46,7 @@ async function test_ip_fetch() {
         })
     }
     result = await getIp(_fetch_ok)
-    if(result?.ip === '127.0.0.1')
+    if(result["ip"] === '127.0.0.1')
         console.log("Ip _fetch_ok Test Passed");
     else
         console.log("Ip _fetch_ok Test Failed", result);
@@ -243,8 +243,9 @@ async function test_Md5_fetch() {
         })
     }
     result = await getMd5value(_fetch_ok)
-    if(result["md5"] === "fa4c6baa0812e5b5c80ed8885e55a8a6" &&
-        result["original"] === "example_text")
+    if(result["original"] === "example_text" &&
+        result["md5"] === "fa4c6baa0812e5b5c80ed8885e55a8a6"
+        )
 
         console.log("Md5 _fetch_ok Test Passed");
     else
