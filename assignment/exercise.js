@@ -1,4 +1,4 @@
-//IP ADDRESS
+////////////////////////////                  IP ADDRESS            ////////////////////////////////
 async function getIp(_fet = fetch) {
     try {
         const response = await _fet('http://ip.jsontest.com/');
@@ -17,7 +17,7 @@ async function putIp() {
     ip.innerHTML = JSON.stringify(dispalyip);
 }
 putIp();
-
+///////////////////////////                IP UNIT TESTING                  ////////////////////////
 async function test_ip_fetch() {
     const _fetch_not_ok = (url) => {
         return new Promise(((resolve, reject) => {
@@ -53,7 +53,7 @@ async function test_ip_fetch() {
 }
 test_ip_fetch();
 
-//HTTP Headers
+////////////////////                        HTTP Headers             ////////////////////////////////
 async function getHeaders(_fet = fetch) {
     try {
         const response = await _fet('http://headers.jsontest.com/');
@@ -73,7 +73,7 @@ async function putHeaders() {
 }
 putHeaders();
 
-//HTTP Headers Unit Testing
+////////////////////////////////        HTTP Headers Unit Testing            /////////////////////////
 async function test_Headers_fetch() {
     const _fetch_not_ok = (url) => {
         return new Promise(((resolve, reject) => {
@@ -119,7 +119,7 @@ async function test_Headers_fetch() {
 }
 test_Headers_fetch();
 
-// //DISPLAY DATE AND TIME
+///////////////////////////////       DISPLAY DATE AND TIME               /////////////////////////
 async function getDateTime(_fet = fetch) {
     try {
         const response = await _fet('http://date.jsontest.com');
@@ -142,7 +142,7 @@ putDateTime();
 setInterval(putDateTime,1000);
 
 
-//DATE and TIME
+///////////////////                   DATE and TIME UNIT TESTING              //////////////////////
 async function test_Datetime_fetch() {
     const _fetch_not_ok = (url) => {
         return new Promise(((resolve, reject) => {
@@ -186,7 +186,7 @@ async function test_Datetime_fetch() {
 }
 test_Datetime_fetch();
 
-//MD5
+////////////////////////                         MD5                        ///////////////////////
 async function getInputMd5() {
     return document.querySelector("#myInput").value;
 }
@@ -210,7 +210,7 @@ async function putMd5value() {
     md5.innerHTML = JSON.stringify(input);
 }
 
-//MD5 UNIT TESTING
+/////////////////////                   MD5 UNIT TESTING                    /////////////////////////
 async function test_Md5_fetch() {
     const _fetch_not_ok = (url) => {
         return new Promise(((resolve, reject) => {
@@ -252,7 +252,7 @@ async function test_Md5_fetch() {
 }
 test_Md5_fetch();
 
-//validation
+///////////////////////                        validation        ///////////////////////////////////
 async function getInputValidate() {
     return document.querySelector("#idtext").value;
 }
@@ -275,7 +275,7 @@ async function putValidate() {
     const textvalue = document.querySelector("#validity");
     textvalue.innerHTML = JSON.stringify(userdetails);
 }
-
+//////////////////////                   VALIDATION UNIT TESTING                 ////////////////////
 async function test_valid_fetch() {
     const _fetch_not_ok = (url) => {
         return new Promise(((resolve, reject) => {
@@ -324,6 +324,9 @@ async function test_valid_fetch() {
 test_valid_fetch();
 
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////                  INTEGRATION TESTING               //////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 // NO_SE WITH TEST CASES FOR IP
 async function test_getIp_no_se() {
     const myIp = await getIp();
